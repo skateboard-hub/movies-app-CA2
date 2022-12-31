@@ -1,5 +1,5 @@
 {
-    "rules": {
-      "react/require-extension": "off"
-    }
+  "rules": {
+    "react/require-extension": "off"
   }
+}
