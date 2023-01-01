@@ -12,7 +12,6 @@ import { Link } from "react-router-dom";
 import { Navigate, useLocation } from "react-router-dom";
 
 
-
 const logInPage = () => {
     const context = useContext(MoviesContext);
     const isAuthenticated = context.isAuthenticated;
@@ -24,12 +23,14 @@ const logInPage = () => {
 
     const login = async () => {
         await context.authenticate(userName, password);
+        
     };
 
 
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
+    
     return (
         <>
             {isAuthenticated ? (

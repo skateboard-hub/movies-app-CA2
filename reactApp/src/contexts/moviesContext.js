@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { login, signup } from "../api/movies-api";
+import { getFavourites } from "../api/movies-api";
 
 export const MoviesContext = React.createContext(null);
 
@@ -8,7 +9,6 @@ const MoviesContextProvider = (props) => {
   const [myReviews, setMyReviews] = useState( {} ) 
   const [playlist, setplaylist] = useState( [] )
   const [knownFor, setKnownFor] = useState( [] )
-
 
   const existingToken = localStorage.getItem("token");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -29,6 +29,7 @@ const MoviesContextProvider = (props) => {
   const addReview = (movie, review) => {
     setMyReviews( {...myReviews, [movie.id]: review } )
   };
+
   const addPlaylist = (movie) => {
     let newPlaylist = [];
     if (!playlist.includes(movie.id)){
@@ -65,6 +66,15 @@ const MoviesContextProvider = (props) => {
       setToken(result.token);
       setIsAuthenticated(true);
       setUserName(username);
+      getFavourites(username)
+      .then((response) => {
+          const ids = response.map((response)=>
+            response.id
+          ) 
+          console.log(ids)
+          setFavorites(ids)
+      })
+
     }
   };
 
@@ -76,6 +86,7 @@ const MoviesContextProvider = (props) => {
 
   const signout = () => {
     setTimeout(() => setIsAuthenticated(false), 100);
+    setFavorites([]);
   }
 
   
@@ -90,6 +101,8 @@ const MoviesContextProvider = (props) => {
         addReview,
         addPlaylist,
         addKnownFor,
+        addToFavorites,
+        setFavorites,
         isAuthenticated,
         authenticate,
         register,

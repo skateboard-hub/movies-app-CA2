@@ -32,6 +32,7 @@ router.post('/:userName/favourites', asyncHandler(async (req, res) => {
   const user = await User.findByUserName(userName);
   await user.favourites.push(movie._id);
   await user.save(); 
+
   res.status(201).json(user); 
 }));
 
@@ -81,6 +82,16 @@ router.post('/',asyncHandler( async (req, res, next) => {
     await user.favourites.push(movie._id);
     await user.save(); 
     res.status(201).json(user); 
+  }));
+
+  router.post('/:username/movie/:id/favourites', asyncHandler(async (req, res) => {
+    const newFavourite = req.params.id;
+    const userName = req.params.username;
+    const user = await User.findByUserName(userName);
+    const index = user.favourites.indexOf(newFavourite)
+    await user.favourites.splice(index, 1);
+    await user.save(); 
+    return res.status(201).json(user); 
   }));
 
 export default router;
