@@ -82,4 +82,5 @@ router.post('/',asyncHandler( async (req, res, next) => {
     await user.save(); 
     res.status(201).json(user); 
   }));
+
 export default router;

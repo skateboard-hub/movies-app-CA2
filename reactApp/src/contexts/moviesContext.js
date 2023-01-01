@@ -8,14 +8,13 @@ const MoviesContextProvider = (props) => {
   const [myReviews, setMyReviews] = useState( {} ) 
   const [playlist, setplaylist] = useState( [] )
   const [knownFor, setKnownFor] = useState( [] )
-  const [isLog, setIsLog] = useState( false)
-  const user =['a','b'];
+
 
   const existingToken = localStorage.getItem("token");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [authToken, setAuthToken] = useState(existingToken);
   const [userName, setUserName] = useState("");
-
+  
   const addToFavorites = (movie) => {
     let newFavorites = [];
     if (!favorites.includes(movie.id)){
@@ -26,6 +25,7 @@ const MoviesContextProvider = (props) => {
     }
     setFavorites(newFavorites)
   };
+  
   const addReview = (movie, review) => {
     setMyReviews( {...myReviews, [movie.id]: review } )
   };
@@ -44,17 +44,7 @@ const MoviesContextProvider = (props) => {
     let newKnownFor = people.known_for;
     setKnownFor(newKnownFor)
   };
-  const changeLogState = (submit) => {
-    console.log("submit:"+submit)
-    console.log("user:"+user)
-    if(submit[0] === user[0] && submit[1] === user[1]){
-        setIsLog(true); 
-    }
-    else{
-      setIsLog(false); 
-    }
-  };
-  
+
   //console.log(myReviews);
   // We will use this function in a later section
   const removeFromFavorites = (movie) => {
@@ -88,6 +78,7 @@ const MoviesContextProvider = (props) => {
     setTimeout(() => setIsAuthenticated(false), 100);
   }
 
+
   return (
     <MoviesContext.Provider
       value={{
@@ -98,9 +89,6 @@ const MoviesContextProvider = (props) => {
         addReview,
         addPlaylist,
         addKnownFor,
-        changeLogState,
-        isLog,
-        user,
         isAuthenticated,
         authenticate,
         register,

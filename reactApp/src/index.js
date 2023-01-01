@@ -18,6 +18,8 @@ import TopRatedMoviesPage from './pages/topRatedMoviesPage'
 import PaginationPage from "./pages/paginationPage";
 import ProtectedRoutes from "./pages/protectedRoutes";
 import LogInPage from "./pages/logInPage";
+import SignUpPage from "./pages/SignUpPage";
+
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -46,6 +48,7 @@ const App = () => {
             <Route path="/moviespage/:page" element={<PaginationPage />} />
             
             <Route path="/login" element={ <LogInPage /> } />
+            <Route path="/signup" element={<SignUpPage />} />
 
             <Route element={<ProtectedRoutes />}>
               <Route path="/movies/favorites" element={<FavoriteMoviesPage />} />

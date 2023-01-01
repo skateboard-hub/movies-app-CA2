@@ -32,6 +32,7 @@ const SiteHeader = () => {
     { label: "Upcoming", path: "/upcoming/1" },
     { label: "TopRated", path: "/topRated/1" },
     { label: "People", path: "/popular/1" },
+    { label: "Favorite", path: "/movies/favorites" },
   ];
 
   const handleMenuSelect = (pageURL) => {
@@ -53,65 +54,65 @@ const SiteHeader = () => {
           <Typography variant="h6" sx={{ flexGrow: 1 }}>
             All you ever wanted to know about Movies!
           </Typography>
-            {isMobile ? (
-              <>
-                <IconButton
-                  aria-label="menu"
-                  aria-controls="menu-appbar"
-                  aria-haspopup="true"
-                  onClick={handleMenu}
-                  color="inherit"
-                >
-                  <MenuIcon />
-                </IconButton>
-                <Menu
-                  id="menu-appbar"
-                  anchorEl={anchorEl}
-                  anchorOrigin={{
-                    vertical: "top",
-                    horizontal: "right",
-                  }}
-                  keepMounted
-                  transformOrigin={{
-                    vertical: "top",
-                    horizontal: "right",
-                  }}
-                  open={open}
-                  onClose={() => setAnchorEl(null)}
-                >
-                  {menuOptions.map((opt) => (
-                    <MenuItem
-                      key={opt.label}
-                      onClick={() => handleMenuSelect(opt.path)}
-                    >
-                      {opt.label}
-                    </MenuItem>
-                  ))}
-                  <Link to={`/movies/favorites`}>
-                  <Stack direction="row" spacing={1} sx={{ display: 'flex', justifyContent: 'center'}}>
-                    <Avatar />
-                  </Stack>
-                  </Link>
-                </Menu>
-              </>
-            ) : (
-              <>
+          {isMobile ? (
+            <>
+              <IconButton
+                aria-label="menu"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleMenu}
+                color="inherit"
+              >
+                <MenuIcon />
+              </IconButton>
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorEl}
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                open={open}
+                onClose={() => setAnchorEl(null)}
+              >
                 {menuOptions.map((opt) => (
-                  <Button
+                  <MenuItem
                     key={opt.label}
-                    color="inherit"
                     onClick={() => handleMenuSelect(opt.path)}
                   >
                     {opt.label}
-                  </Button>
+                  </MenuItem>
                 ))}
-                <Link to={`/movies/favorites`}>
+                <Link to={`/login`}>
+                  <Stack direction="row" spacing={1} sx={{ display: 'flex', justifyContent: 'center' }}>
+                    <Avatar />
+                  </Stack>
+                </Link>
+              </Menu>
+            </>
+          ) : (
+            <>
+              {menuOptions.map((opt) => (
+                <Button
+                  key={opt.label}
+                  color="inherit"
+                  onClick={() => handleMenuSelect(opt.path)}
+                >
+                  {opt.label}
+                </Button>
+              ))}
+              <Link to={`/login`}>
                 <Stack direction="row" spacing={1}>
                   <Avatar />
                 </Stack>
-                </Link>
-              </>
-            )}
+              </Link>
+            </>
+          )}
         </Toolbar>
       </AppBar>
       <Offset />

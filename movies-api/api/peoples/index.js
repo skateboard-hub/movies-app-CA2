@@ -5,8 +5,9 @@ import peopleModel from './peopleModel';
 
 const router = express.Router(); 
 
-router.get('/popular', asyncHandler( async(req, res) => {
-    const peoples = await getPeoples();
+router.get('/popular/:page', asyncHandler( async(req, res) => {
+  const page = parseInt(req.params.page);
+    const peoples = await getPeoples(page);
     res.status(200).json(peoples);
 }));
 
