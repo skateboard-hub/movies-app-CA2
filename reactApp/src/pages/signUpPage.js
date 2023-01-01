@@ -33,6 +33,19 @@ const SignUpPage = () => {
             context.register(userName, password);
             setRegistered(true);
         }
+        else{
+            if(!validPassword){
+                alert("Invalid password!");
+            }
+            else{
+                if(password != passwordAgain){
+                    alert("Different passwords!");
+                }
+                else{
+                    alert("Invalid Email");
+                }
+            }
+        }
     }
 
     if (registered === true) {

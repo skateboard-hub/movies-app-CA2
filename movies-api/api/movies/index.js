@@ -3,7 +3,7 @@ import { movieReviews} from './moviesData';
 import uniqid from 'uniqid';
 import movieModel from './movieModel';
 import asyncHandler from 'express-async-handler';
-import { getUpcoimngMovies , getTopRatedMovies } from '../tmdb-api';
+import { getUpcoimngMovies , getTopRatedMovies , getMoviesByPage ,getMovieImages, getMovie} from '../tmdb-api';
 
 const router = express.Router(); 
 router.get('/:id/reviews', (req, res) => {
@@ -21,7 +21,7 @@ router.get('/:id/reviews', (req, res) => {
 
 router.get('/:id', asyncHandler(async (req, res) => {
     const id = parseInt(req.params.id);
-    const movie = await movieModel.findByMovieDBId(id);
+    const movie = await getMovie(id);
     if (movie) {
         res.status(200).json(movie);
     } else {
@@ -33,6 +33,13 @@ router.get('/', asyncHandler(async (req, res) => {
     const movies = await movieModel.find();
     res.status(200).json(movies);
 }));
+
+router.get('/page/:page', asyncHandler(async (req, res) => {
+    const page = parseInt(req.params.page);
+    const moviesByPage = await getMoviesByPage(page);
+    res.status(200).json(moviesByPage);
+}));
+
 
 router.post('/:id/reviews', (req, res) => {
     const id = parseInt(req.params.id);
@@ -58,9 +65,9 @@ router.get('/tmdb/upcoming/:page', asyncHandler( async(req, res) => {
 
 router.get('/upcoming/:page', asyncHandler( async(req, res) => {
     const page = parseInt(req.params.page);
-    console.log(page);
+    //console.log(page);
     const upcomingMovies = await getUpcoimngMovies(page);
-    console.log(upcomingMovies);
+    //console.log(upcomingMovies);
     if (upcomingMovies) {
         res.status(200).json(upcomingMovies);
     } else {
@@ -78,5 +85,9 @@ router.get('/topRated/:page', asyncHandler( async(req, res) => {
     }
 }));
 
+router.get('/:id/images', asyncHandler( async(req, res) => {
+    const images = await getMovieImages(req.params.id);
+    res.status(200).json(images);
+}));
 
 export default router;

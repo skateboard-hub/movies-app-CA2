@@ -4,9 +4,19 @@ const Schema = mongoose.Schema;
 
 
 const PeopleSchema = new Schema({
+    birthday:{ type:String },
+    known_for_department: { type:String },
+    deathday:{ type:String },
+    id:{ type : Number , required: true, unique: true },
+    name: { type: String },
     adult: { type: Boolean },
     gender: { type: Number },
-    id: { type: Number, required: true, unique: true },
+    biography: { type: String },
+    popularity: { type: Number },
+    place_of_birth: { type: String},
+    profile_path: {type: String},
+    adult: { type: Boolean },
+    imdb_id: { type: String},
     known_for: [{
         adult: { type: Boolean },
         id: { type: Number, required: true, unique: false },
@@ -34,10 +44,7 @@ const PeopleSchema = new Schema({
         status: { type: String },
         tagline: { type: String }
     }],
-    known_for_department: { type: String },
-    name: { type: String },
-    popularity: { type: Number },
-    profile_path: { type: String },
+
 });
 
 PeopleSchema.statics.findByPeopleId = function (id) {

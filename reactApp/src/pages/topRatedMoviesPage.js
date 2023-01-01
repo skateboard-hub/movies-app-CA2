@@ -1,5 +1,5 @@
 import React from "react";
-import { getTopRatedMovies } from "../api/tmdb-api";
+import { getTopRatedMovies } from "../api/movies-api";
 import PageTemplate from '../components/templateMovieListPage';
 import { useQuery } from 'react-query';
 import Spinner from '../components/spinner';
@@ -14,7 +14,7 @@ const TopRatedPage = (props) => {
 
   const { page } = useParams();
   const { data: pages, error, isLoading, isError } = useQuery(
-    ["topRted", { id: page }],
+    ["topRted", { page: page }],
     getTopRatedMovies
   );
   if (isLoading) {

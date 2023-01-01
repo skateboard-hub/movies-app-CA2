@@ -1,6 +1,6 @@
 import express from 'express';
 import asyncHandler from 'express-async-handler';
-import {  getPeopleImages, getPeoples } from '../tmdb-api';
+import {  getPeopleImages, getPeoples, getPeople } from '../tmdb-api';
 import peopleModel from './peopleModel';
 
 const router = express.Router(); 
@@ -13,7 +13,7 @@ router.get('/popular/:page', asyncHandler( async(req, res) => {
 
 router.get('/:id', asyncHandler( async(req, res,) => {
   const id = parseInt(req.params.id);
-  const people = await peopleModel.findByPeopleId(id);
+  const people = await getPeople(id);
   res.status(200).json(people);
 }));
 

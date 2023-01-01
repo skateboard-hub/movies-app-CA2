@@ -1,7 +1,7 @@
 import PeopleHeader from "../headerPeople";
 import Grid from "@mui/material/Grid";
 import ImageListItem from "@mui/material/ImageListItem";
-import { getPeopleImages } from "../../api/tmdb-api";
+import { getPeopleImages } from "../../api/movies-api";
 import { useQuery } from "react-query";
 import Spinner from '../spinner'
 import Slider from 'react-slick';

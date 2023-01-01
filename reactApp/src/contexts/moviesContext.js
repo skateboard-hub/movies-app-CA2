@@ -78,6 +78,7 @@ const MoviesContextProvider = (props) => {
     setTimeout(() => setIsAuthenticated(false), 100);
   }
 
+  
 
   return (
     <MoviesContext.Provider

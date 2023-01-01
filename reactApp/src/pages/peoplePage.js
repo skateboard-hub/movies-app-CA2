@@ -1,5 +1,5 @@
 import React from "react";
-import { getPeoples } from "../api/tmdb-api";
+import { getPeoples } from "../api/movies-api";
 import { useQuery } from 'react-query';
 import Spinner from '../components/spinner';
 import PeoplePageTemplate from '../components/templatePeopleListPage';

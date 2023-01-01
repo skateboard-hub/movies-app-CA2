@@ -2,7 +2,7 @@ import React from "react";
 import MovieHeader from "../headerMovie";
 import Grid from "@mui/material/Grid";
 import ImageListItem from "@mui/material/ImageListItem";
-import { getMovieImages } from "../../api/tmdb-api";
+import { getMovieImages } from "../../api/movies-api";
 import { useQuery } from "react-query";
 import Spinner from '../spinner'  
 import Slider from 'react-slick';

@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import MovieDetails from "../components/movieDetails/";
 import PageTemplate from "../components/templateMoviePage";
 //import useMovie from "../hooks/useMovie";
-import { getMovie } from '../api/tmdb-api'
+import { getMovie } from '../api/movies-api'
 import { useQuery } from "react-query";
 import Spinner from '../components/spinner'
 
@@ -13,7 +13,7 @@ const MoviePage = (props) => {
     ["movie", { id: id }],
     getMovie
   );
-
+  console.log(movie)
   if (isLoading) {
     return <Spinner />;
   }
