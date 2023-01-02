@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { login, signup } from "../api/movies-api";
+import { login, signup, getMovie } from "../api/movies-api";
 import { getFavourites } from "../api/movies-api";
 
 export const MoviesContext = React.createContext(null);
@@ -14,7 +14,7 @@ const MoviesContextProvider = (props) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [authToken, setAuthToken] = useState(existingToken);
   const [userName, setUserName] = useState("");
-  
+
   const addToFavorites = (movie) => {
     let newFavorites = [];
     if (!favorites.includes(movie.id)){
@@ -71,8 +71,9 @@ const MoviesContextProvider = (props) => {
           const ids = response.map((response)=>
             response.id
           ) 
-          console.log(ids)
+          
           setFavorites(ids)
+          
       })
 
     }
@@ -90,7 +91,6 @@ const MoviesContextProvider = (props) => {
   }
 
   
-
   return (
     <MoviesContext.Provider
       value={{

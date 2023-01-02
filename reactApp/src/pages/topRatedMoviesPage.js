@@ -14,7 +14,7 @@ const TopRatedPage = (props) => {
 
   const { page } = useParams();
   const { data: pages, error, isLoading, isError } = useQuery(
-    ["topRted", { page: page }],
+    ["topRated", { page: page }],
     getTopRatedMovies
   );
   if (isLoading) {

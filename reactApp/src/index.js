@@ -19,6 +19,7 @@ import PaginationPage from "./pages/paginationPage";
 import ProtectedRoutes from "./pages/protectedRoutes";
 import LogInPage from "./pages/logInPage";
 import SignUpPage from "./pages/SignUpPage";
+import RecommendPage from "./pages/recommendPage";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -49,6 +50,8 @@ const App = () => {
             
             <Route path="/login" element={ <LogInPage /> } />
             <Route path="/signup" element={<SignUpPage />} />
+
+            <Route path="/recommend" element={<RecommendPage/>} />
 
             <Route element={<ProtectedRoutes />}>
               <Route path="/movies/favorites" element={<FavoriteMoviesPage />} />

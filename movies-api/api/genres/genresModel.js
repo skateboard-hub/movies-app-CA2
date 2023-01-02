@@ -7,4 +7,4 @@ id: { type: Number,  unique: true, required: true},
 name: {type: String, required: true }
 });
 
-export default mongoose.model('Genre', GenreSchema);
+export default mongoose.model('Genre', GenreSchema)
