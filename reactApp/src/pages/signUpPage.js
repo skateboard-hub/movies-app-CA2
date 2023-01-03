@@ -131,6 +131,7 @@ const SignUpPage = () => {
                                         InputLabelProps={{ shrink: true }}
                                         sx={{ width: '100%' }}
                                         onChange={(e) => setUserName(e.target.value)}
+                                        autoComplete={'off'}
                                     />
                                     <br />
                                     <TextField
@@ -141,6 +142,7 @@ const SignUpPage = () => {
                                         InputLabelProps={{ shrink: true }}
                                         sx={{ width: '100%' }}
                                         onChange={(e) => setEmail(e.target.value)}
+                                        autoComplete={'off'}
                                     />
                                     <br />
                                     <TextField
@@ -150,6 +152,7 @@ const SignUpPage = () => {
                                         InputLabelProps={{ shrink: true }}
                                         sx={{ width: '100%' }}
                                         onChange={(e) => setPassword(e.target.value)}
+                                        autoComplete={'off'}
                                     />
                                     <br />
                                     <TextField
@@ -159,6 +162,7 @@ const SignUpPage = () => {
                                         InputLabelProps={{ shrink: true }}
                                         sx={{ width: '100%' }}
                                         onChange={e => {setPasswordAgain(e.target.value)}}
+                                        autoComplete={'off'}
                                     />
                                     <br />
                                     <Button

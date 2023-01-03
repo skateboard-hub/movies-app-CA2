@@ -118,6 +118,7 @@ const logInPage = () => {
                                             InputLabelProps={{ shrink: true }}
                                             sx={{ width: '100%' }}
                                             onChange={(e) => setPassword(e.target.value)}
+                                            autoComplete={'off'}
                                         />
                                         <br />
                                         <Button
@@ -156,6 +157,7 @@ const logInPage = () => {
                                             InputLabelProps={{ shrink: true }}
                                             sx={{ width: '100%' }}
                                             onChange={(e) => setPassword(e.target.value)}
+                                            autoComplete={'off'}
                                         />
                                         <br />
                                         <Button
