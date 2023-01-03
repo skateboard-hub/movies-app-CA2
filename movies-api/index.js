@@ -7,7 +7,7 @@ import genresRouter from './api/genres';
 import usersRouter from './api/users';
 import peopleRouter from './api/peoples';
 import passport from './authenticate';
-
+import moviesAuthenticateRouter from './api/movies/tmdb';
 
 dotenv.config();
 
@@ -27,6 +27,7 @@ const port = process.env.PORT;
 app.use(express.json());
 app.use(passport.initialize());
 
+app.use('/api/movies/tmdb', passport.authenticate('jwt', { session: false }), moviesAuthenticateRouter);
 app.use('/api/movies',  moviesRouter);
 app.use('/api/genres', genresRouter);
 app.use('/api/users', usersRouter);

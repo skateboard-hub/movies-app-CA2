@@ -104,7 +104,11 @@ export const getMovieImages = ({ queryKey }) => {
     const [, idPart] = queryKey;
     const { id } = idPart;
     return fetch(
-        `/api/movies/${id}/images`
+        `/api/movies/tmdb/movie/${id}//images`,{
+            headers: {
+                'Authorization': window.localStorage.getItem('token')
+            }
+        }
     ).then((response) => {
         if (!response.ok) {
             throw new Error(response.json().message);
@@ -191,13 +195,18 @@ export const getMovie = (args) => {
     const [, idPart] = args.queryKey;
     const { id } = idPart;
     return fetch(
-      `/api/movies/${id}`
+      `/api/movies/tmdb/movie/${id}`,{
+        headers: {
+            'Authorization': window.localStorage.getItem('token')
+        }
+      }
     ).then(res => {
       return res.json();
     }).catch((error) => {
       console.log(error);
     });
 };
+
 
 
 export const getMovieById = (id) => {
